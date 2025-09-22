@@ -1,7 +1,4 @@
-
 import os
-
-
 
 def choose_directory(directory):
     path_to_directory = os.path.join(os.path.dirname(__file__), "..", directory)

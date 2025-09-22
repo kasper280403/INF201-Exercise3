@@ -1,7 +1,12 @@
+import findFriends
+
 def main():
     print("Program is running. Type q/Q to quit.")
 
     while True:
+        find_friends = findFriends.find_friends(string)
+        findFriends.print_nice(find_friends)
+
 
         user_input = input()
         if user_input.lower() == "q":
@@ -10,6 +15,12 @@ def main():
 
         # Her kan du legge til annen funksjonalitet som skal kjøre kontinuerlig
 
+
+string = """
+Ali and Per and friends.
+Kari and Joe know each other.
+James has known Peter since school days.
+"""
 
 if __name__ == "__main__":
     main()
