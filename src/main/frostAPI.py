@@ -16,6 +16,17 @@ response = requests.get(endpoint, params=parameters, auth=(client_id, ""))
 
 if response.status_code == 200:
     data = response.json()
-    print(data)
+    records = []
+    for item in data.get("data", []):
+        date = item["referenceTime"][:10]
+        for obs in item["observations"]:
+            records.append({
+                "date": date,
+                "value": obs["value"],
+                "unit": obs["unit"]
+            })
+
+    df = pd.DataFrame(records)
+    print(df.head(20))
 else:
-    print("Feil ved henting:", response.status_code, response.text)
+    print("Error retrieving data:", response.status_code, response.text)
