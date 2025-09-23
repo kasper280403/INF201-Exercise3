@@ -1,0 +1,4 @@
+Date: 2022-01-05
+Location: Oslo
+Number: 12
+<other data>

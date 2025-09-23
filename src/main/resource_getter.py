@@ -2,12 +2,12 @@ import os
 import src.main.user_input
 
 
-def print_res_list(message = "\n---Resource List---"):
+def get_resource_paths(message = "\n---Resource List---"):
     print(message)
     resources_list = []
     index = 0
     base_dir = os.path.dirname(__file__)
-    resources_path = os.path.join(base_dir, "..", "resources")
+    resources_path = os.path.join(base_dir, "..", "resources/test_files")
 
     for filename in os.listdir(resources_path):
         index += 1
@@ -22,6 +22,7 @@ def choose_resource(resource_list):
     print(f"You selected: {resource_list[value - 1]}")
     return resource_list[value-1]
 
+print_res_list()
 
 
 

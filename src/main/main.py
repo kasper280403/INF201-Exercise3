@@ -1,4 +1,6 @@
 import findFriends
+from src.main import fileTree
+
 
 def main():
     print("Program is running. Type q/Q to quit.")
@@ -6,6 +8,8 @@ def main():
     while True:
         find_friends = findFriends.find_friends(string)
         findFriends.print_nice(find_friends)
+
+        fileTree.print_tree("resources")
 
 
         user_input = input()
