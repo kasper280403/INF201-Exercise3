@@ -23,7 +23,7 @@ def get_file_paths(directory):
     path_to_directory = fileTree.choose_directory(directory)
     skip_dir = "sortedFiles"
 
-    for root, dirs, files in os.walk(root_path):
+    for root, dirs, files in os.walk(path_to_directory):
         if skip_dir in dirs:
             dirs.remove(skip_dir)
 

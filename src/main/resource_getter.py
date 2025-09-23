@@ -22,7 +22,6 @@ def choose_resource(resource_list):
     print(f"You selected: {resource_list[value - 1]}")
     return resource_list[value-1]
 
-print_res_list()
 
 
 
