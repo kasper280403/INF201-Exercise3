@@ -1,25 +1,26 @@
 import os
-import pandas as pd
 from src.main import fileTree
+from pathlib import Path
+import shutil
 
 
 def get_file_info(file):
-    df = pd.read_csv(file)
-    head = df.head(3)
-    print(head)
+    with open(file, "r") as f:
+        lines = f.readlines()
+    return lines[:3]
 
-def interpret_file_info(s):
-    info_string = s.splitline()
 
-    if info_string[0] == "Date:" and info_string[1] == "Location:" and info_string[2] == "Number:":
-        return info_string[0][6:], info_string[1][10:], info_string[2][8:]
-    else:
+def interpret_file_info(lines):
+    try:
+        date = lines[0].strip().split(":", 1)[1].strip()
+        location = lines[1].strip().split(":", 1)[1].strip()
+        number = lines[2].strip().split(":", 1)[1].strip()
+        return date, location, number
+    except (IndexError, ValueError):
         return None, None, None
 
 
-
-
-def get_file_paths(directory):
+def sort_files(directory):
     path_to_directory = fileTree.choose_directory(directory)
     skip_dir = "sortedFiles"
 
@@ -33,6 +34,10 @@ def get_file_paths(directory):
             date, location, number = interpret_file_info(file_info)
             if date is None:
                 continue
-            else:
+
+            destination = Path(__file__).parent.parent / "resources/sortedFiles" / date / location
+            destination.mkdir(parents=True, exist_ok=True)
+
+            shutil.copy(file_path, destination / number)
 
 

@@ -55,7 +55,6 @@ plt.show()
 
 merged_df = pd.merge(blindern_df, aas_df, on="date", suffixes=("_blindern", "_aas"))
 
-# Lag scatterplot
 plt.scatter(merged_df["value_blindern"], merged_df["value_aas"], color="green")
 plt.xlabel("Blindern temperatur (°C)")
 plt.ylabel("Aas temperatur (°C)")
